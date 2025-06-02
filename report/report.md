@@ -42,7 +42,24 @@ https://www.propertyguru.com.sg/property-for-sale?districtCode=D03&districtCode=
 
 #### Handling rate limiting
 
-PropertyGuru will start to block request from our IP and return a 403 error if the requests are made too quickly. To mitigate this, we will simply increase the timeout between request. If it still fails after the delay then we will retry with exponential backoff (i.e the retry delay will increase with each subsequent retry)
+PropertyGuru will start to block request from our IP and return a 403 error if the requests are made too quickly. To mitigate this, we will simply increase the timeout between request.
+
+If it still fails after the delay then we will retry with exponential backoff (i.e the retry delay will increase with each subsequent retry)
+
+```js
+// Configure retry behavior
+axiosRetry(client, {
+  retryDelay: (retryCount) => {
+    // Time to next retry increases exponentially
+    const delay = Math.pow(2, retryCount) * 1000;
+    logger.info(`Retry attempt ${retryCount}. Retrying in ${delay}ms...`);
+    return delay;
+  },
+  //...
+});
+```
+
+![Next retry increases exponentially](./img/rateLimiting.png)
 
 #### Dynamically loaded content
 

@@ -4,10 +4,9 @@ import { logger } from '../utils/logger.js';
 /**
  * Parse property listings from HTML content
  * @param {string} html - HTML content to parse
- * @param {Object} config - Configuration object
  * @returns {Array} - Array of parsed property objects
  */
-export function parseListings(html, config) {
+export function parseListings(html) {
   try {
     const $ = cheerio.load(html);
     const listings = [];

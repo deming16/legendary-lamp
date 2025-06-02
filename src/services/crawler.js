@@ -87,7 +87,7 @@ async function processPage(page, httpClient, config, progressBar) {
     const response = await httpClient.get(url);
     
     // Parse HTML response
-    const listings = parseListings(response.data, config);
+    const listings = parseListings(response.data);
     
     // Update progress
     progressBar.increment();
