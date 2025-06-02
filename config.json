@@ -1,0 +1,14 @@
+{
+  "params": {
+    "listingType": "sale",
+    "propertyTypeGroup": "N",
+    "propertyTypeCode": "CONDO",
+    "isCommercial": "false",
+    "districtCode": ["D03", "D05"]
+  },
+  "pages": 50,
+  "delay": 500,
+  "timeout": 30000,
+  "retries": 10,
+  "concurrency": 2
+}
